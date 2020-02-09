@@ -1,0 +1,41 @@
+<h2 class="mat-h2" *ngIf="data.action === 'new'">Nieuw liturgie-item</h2>
+<h2 class="mat-h2" *ngIf="data.action !== 'new'">Liturgie-item bewerken</h2>
+
+<div (keydown.enter)="close()">
+  <mat-form-field appearance="fill" floatLabel="auto">
+    <mat-label>Titel</mat-label>
+    <input autocomplete="off" matInput [(ngModel)]="object.title" [appAutofocus]="object.type === 'titel' || object.type === 'votum' || object.type === 'collecte' || object.type === 'zegen'">
+  </mat-form-field>
+
+  <div *ngIf="object.type === 'votum'">
+    <mat-form-field appearance="fill" floatLabel="auto">
+      <mat-label>Vredegroet</mat-label>
+      <input matInput [(ngModel)]="object.vredegroet">
+    </mat-form-field>
+  </div>
+  <div *ngIf="object.type === 'lied'">
+    <mat-form-field appearance="fill" floatLabel="auto">
+      <mat-label>Lied</mat-label>
+      <input autocomplete="off" matInput [(ngModel)]="object.song" [appAutofocus]>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" floatLabel="auto">
+      <mat-label>Verzen</mat-label>
+      <input autocomplete="off" matInput [(ngModel)]="verses" (ngModelChange)="updateVerses()">
+    </mat-form-field>
+  </div>
+  <div *ngIf="object.type === 'bijbeltekst'">
+    <mat-form-field appearance="fill" floatLabel="auto">
+      <mat-label>Tekst</mat-label>
+      <input autocomplete="off" matInput [(ngModel)]="object.text" [appAutofocus]>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>Weergave in liturgie</mat-label>
+    <input autocomplete="off" matInput [placeholder]="object.getTitle()" [(ngModel)]="object.liturgie">
+  </mat-form-field>
+
+  <button mat-raised-button *ngIf="data.action === 'new'" color="primary" (click)="close()" style="float: right;">Toevoegen</button>
+  <button mat-raised-button *ngIf="data.action !== 'new'" color="primary" (click)="close()" style="float: right;">Opslaan</button>
+</div>

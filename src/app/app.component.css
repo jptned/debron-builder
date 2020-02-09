@@ -1,0 +1,40 @@
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.form-row {
+  margin-top: 16px;
+}
+
+button ~ button {
+  margin-left: 8px;
+}
+
+::ng-deep .mat-vertical-content {
+  padding-top: 24px;
+}
+
+.button-row {
+  margin-top: 16px;
+}
+
+.mat-expansion-panel-header[aria-disabled=true] {
+  color: black;
+}
+
+.mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused,
+.mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused,
+.mat-expansion-panel .mat-expansion-panel-header:hover {
+  background: rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+}
+
+mat-expansion-panel-header {
+  position: relative;
+}
+
+mat-expansion-panel-header button {
+  position: absolute;
+  right: 10px;
+  top: 4px;
+}

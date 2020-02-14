@@ -12,6 +12,9 @@ export abstract class LiturgieItem {
   title?: string;
   liturgie = '';
   type: string;
+  song = '';
+  text = '';
+  vredegroet = '';
 
   abstract getTitle(): string;
 }

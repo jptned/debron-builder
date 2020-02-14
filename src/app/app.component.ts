@@ -21,6 +21,8 @@ export class AppComponent {
     welkom,
     new Votum(),
   ];
+  downloading = false;
+  downloadURL: string;
 
   constructor(private formBuilder: FormBuilder, private bottomSheet: MatBottomSheet) {
     const nextSunday = new Date();
@@ -29,6 +31,7 @@ export class AppComponent {
     this.presentationForm = this.formBuilder.group({
       date: [nextSunday, Validators.required],
       ochtend: [true, Validators.required],
+      thema: ['']
     });
 
     this.liturgieForm = this.formBuilder.group({
@@ -124,5 +127,47 @@ export class AppComponent {
   updateLiturgieForm() {
     this.liturgieForm.get('checkable').setValue(this.liturgieItems.length > 0);
     this.liturgieForm.get('checkable').updateValueAndValidity();
+  }
+
+  generateJSON() {
+    return JSON.stringify({
+      presentatie: this.presentationForm.value,
+      liturgie: this.liturgieItems,
+      collecte: this.collecteForm.value
+    }, null, 2);
+  }
+
+  genereer() {
+    this.downloading = true;
+    this.downloadURL = '';
+    const date = new Date(this.presentationForm.value.date);
+    const filename = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
+      + ', ' + (this.presentationForm.value.ochtend ? 'ochtend' : 'middag') + '.pptm';
+
+    fetch('http://localhost:3000/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: this.generateJSON()
+    })
+      .then(resp => resp.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        // the filename you want
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        this.downloading = false;
+      })
+      .catch((error) => {
+        alert('Er ging iets mis bij het genereren');
+        console.error(error);
+        this.downloading = false;
+      });
   }
 }

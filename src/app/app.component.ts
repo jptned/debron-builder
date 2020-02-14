@@ -144,7 +144,7 @@ export class AppComponent {
     const filename = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
       + ', ' + (this.presentationForm.value.ochtend ? 'ochtend' : 'middag') + '.pptm';
 
-    fetch('http://localhost:3000/generate', {
+    fetch('https://api.debronhg.tim365.dev/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -23,6 +23,7 @@ export class AppComponent {
   ];
   downloading = false;
   downloadURL: string;
+  downloaded = false;
 
   constructor(private formBuilder: FormBuilder, private bottomSheet: MatBottomSheet) {
     const nextSunday = new Date();
@@ -140,11 +141,9 @@ export class AppComponent {
   genereer() {
     this.downloading = true;
     this.downloadURL = '';
-    const date = new Date(this.presentationForm.value.date);
-    const filename = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
-      + ', ' + (this.presentationForm.value.ochtend ? 'ochtend' : 'middag') + '.pptm';
+    const filename = this.name();
 
-    fetch('https://api.debronhg.tim365.dev/generate', {
+    fetch('http://192.168.1.224:3000/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -163,11 +162,18 @@ export class AppComponent {
         a.click();
         window.URL.revokeObjectURL(url);
         this.downloading = false;
+        this.downloaded = true;
       })
       .catch((error) => {
         alert('Er ging iets mis bij het genereren');
         console.error(error);
         this.downloading = false;
       });
+  }
+
+  private name() {
+    const date = new Date(this.presentationForm.value.date);
+    return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
+      + ', ' + (this.presentationForm.value.ochtend ? 'ochtend' : 'middag') + '.pptm';
   }
 }

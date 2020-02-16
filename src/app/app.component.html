@@ -110,7 +110,7 @@
 
       <div class="form-row">
         <button mat-raised-button color="accent" matStepperPrevious>Vorige</button>
-        <button mat-raised-button color="accent" matStepperNext [disabled]="!presentationForm.valid">Volgende</button>
+        <button mat-raised-button color="accent" matStepperNext [disabled]="!collecteForm.valid">Volgende</button>
       </div>
     </mat-step>
 
@@ -118,6 +118,15 @@
       <button mat-raised-button color="primary" (click)="genereer()" [disabled]="downloading">Genereer presentatie</button>
 
       <mat-spinner *ngIf="downloading"></mat-spinner>
+
+      <mat-selection-list *ngIf="downloaded && !downloading">
+        <mat-list-option>Open de presentatie en klik op 'herstellen'</mat-list-option>
+        <mat-list-option>Sla de presentatie op als {{ name() }}</mat-list-option>
+        <mat-list-option>Voeg de notenbalken toe</mat-list-option>
+        <mat-list-option>Voeg de bijbelteksten toe</mat-list-option>
+        <mat-list-option>Voeg de mededelingen voor de dienst en bij de collecte toe</mat-list-option>
+        <mat-list-option>Check de presentatie</mat-list-option>
+      </mat-selection-list>
 
       <mat-form-field style="margin-top: 20px;display: block;">
         <mat-label>Configuratie</mat-label>

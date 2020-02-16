@@ -171,7 +171,7 @@ export class AppComponent {
       });
   }
 
-  private name() {
+  public name() {
     const date = new Date(this.presentationForm.value.date);
     return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
       + ', ' + (this.presentationForm.value.ochtend ? 'ochtend' : 'middag') + '.pptm';

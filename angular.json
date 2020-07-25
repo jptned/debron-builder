@@ -124,5 +124,10 @@
       }
     }
   },
-  "defaultProject": "debron-builder"
+  "defaultProject": "debron-builder",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

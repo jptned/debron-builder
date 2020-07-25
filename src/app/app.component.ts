@@ -11,7 +11,7 @@ welkom.title = 'Welkom';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   presentationForm;
@@ -32,7 +32,8 @@ export class AppComponent {
     this.presentationForm = this.formBuilder.group({
       date: [nextSunday, Validators.required],
       ochtend: [true, Validators.required],
-      thema: ['']
+      thema: [''],
+      wachtwoord: ['', Validators.required],
     });
 
     this.liturgieForm = this.formBuilder.group({
@@ -173,7 +174,7 @@ export class AppComponent {
 
   public name() {
     const date = new Date(this.presentationForm.value.date);
-    return date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
+    return date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear()
       + ', ' + (this.presentationForm.value.ochtend ? 'ochtend' : 'middag') + '.pptm';
   }
 }

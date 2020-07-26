@@ -15,6 +15,11 @@ export abstract class LiturgieItem {
   song = '';
   text = '';
   vredegroet = '';
+  book = '';
+  fromChapter = '1';
+  toChapter = '1';
+  fromVerse = '1';
+  toVerse = '1';
 
   abstract getTitle(): string;
 }

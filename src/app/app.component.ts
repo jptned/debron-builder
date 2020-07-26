@@ -186,7 +186,7 @@ export class AppComponent {
     this.downloadURL = '';
     const filename = this.name();
 
-    fetch('http://localhost:3000/generate', {
+    fetch('https://api.debronhg.tim365.dev/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

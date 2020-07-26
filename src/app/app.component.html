@@ -71,7 +71,6 @@
       <form [formGroup]="collecteForm">
         <div>
           <h2 class="mat-h2">GKv</h2>
-          <h3 class="mat-h3">Vandaag</h3>
           <mat-form-field>
             <mat-label>1e collecte</mat-label>
             <input matInput required formControlName="gkv1" autocomplete="off">
@@ -80,21 +79,10 @@
             <mat-label>2e collecte</mat-label>
             <input matInput required formControlName="gkv2" autocomplete="off">
           </mat-form-field>
-
-          <h3 class="mat-h3">Volgende week</h3>
-          <mat-form-field>
-            <mat-label>1e collecte</mat-label>
-            <input matInput required formControlName="gkv3" autocomplete="off">
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>2e collecte</mat-label>
-            <input matInput required formControlName="gkv4" autocomplete="off">
-          </mat-form-field>
         </div>
 
-        <div *ngIf="presentationForm.get('ochtend').value === false">
+        <div>
           <h2 class="mat-h2">NGK</h2>
-          <h3 class="mat-h3">Vandaag</h3>
           <mat-form-field>
             <mat-label>1e collecte</mat-label>
             <input matInput required formControlName="ngk1" autocomplete="off">
@@ -102,16 +90,6 @@
           <mat-form-field>
             <mat-label>2e collecte</mat-label>
             <input matInput required formControlName="ngk2" autocomplete="off">
-          </mat-form-field>
-
-          <h3 class="mat-h3">Volgende week</h3>
-          <mat-form-field>
-            <mat-label>1e collecte</mat-label>
-            <input matInput required formControlName="ngk3" autocomplete="off">
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>2e collecte</mat-label>
-            <input matInput required formControlName="ngk4" autocomplete="off">
           </mat-form-field>
         </div>
       </form>

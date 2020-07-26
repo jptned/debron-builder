@@ -8,6 +8,40 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 const welkom = new Titel();
 welkom.title = 'Welkom';
 
+const collectedoelen = {
+  '5-7-2020': {gkv1: 'Diaconie', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Actueel doel'},
+  '12-7-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Zending'},
+  '19-7-2020': {gkv1: 'TU Kampen', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Diaconie'},
+  '26-7-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Diaconie'},
+  '2-8-2020': {gkv1: 'Diaconie', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Pensioenvoorziening predikanten'},
+  '9-8-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Diaconie'},
+  '16-8-2020': {gkv1: 'Missionaire projecten dichtbij', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'algemene Chr. Doelen'},
+  '23-8-2020': {gkv1: 'Kerk inz. div. quota', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Pensioenvoorziening predikanten'},
+  '30-8-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Steun behoevende kerken'},
+  '6-9-2020': {gkv1: 'Diaconie', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Actueel doel'},
+  '13-9-2020': {gkv1: 'Diaconie', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Pensioenvoorziening predikanten'},
+  '20-9-2020': {gkv1: 'India Mission', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Algemene Chr. Doelen'},
+  '27-9-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Diaconie'},
+  '4-10-2020': {gkv1: 'Diaconie', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Predikantenopleiding'},
+  '11-10-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Activiteiten Commissie'},
+  '18-10-2020': {gkv1: 'TU Kampen', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Pensioenvoorziening predikanten'},
+  '25-10-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Steun behoevende kerken'},
+  '1-11-2020': {gkv1: 'Diaconie', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Actueel doel'},
+  '4-11-2020': {gkv1: 'Diaconie', gkv2: 'Rente en aflossing', ngk1: '', ngk2: 'Actueel doel'},
+  '8-11-2020': {gkv1: 'Jeugdbeleid', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'St Hulp Oost Europa'},
+  '15-11-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Pensioenvoorziening predikanten'},
+  '22-11-2020': {gkv1: 'Kerk inz. div. quota', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Diaconie'},
+  '29-11-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Kinderkerstfeest'},
+  '6-12-2020': {gkv1: 'Diaconie', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Jeugdclub werk'},
+  '13-12-2020': {gkv1: 'Diaconie', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Pensioenvoorziening predikanten'},
+  '20-12-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Predikantenopleiding'},
+  '25-12-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Opgave kerstfeest organisatie'},
+  '27-12-2020': {gkv1: 'India Mission', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Diaconie'},
+  '31-12-2020': {gkv1: 'Kerk', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Pensioenvoorziening predikanten'},
+  '3-1-2021': {gkv1: '', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Actueel doel'},
+  '10-1-2021': {gkv1: '', gkv2: 'Rente en aflossing', ngk1: 'Kerk', ngk2: 'Pensioenvoorziening predikanten'},
+};
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -43,25 +77,33 @@ export class AppComponent {
     this.collecteForm = this.formBuilder.group({
       gkv1: ['', Validators.required],
       gkv2: ['Rente en aflossing', Validators.required],
-      gkv3: ['', Validators.required],
-      gkv4: ['Rente en aflossing', Validators.required],
-      ngk1: ['Kerk'],
-      ngk2: [''],
-      ngk3: ['Kerk'],
-      ngk4: [''],
+      ngk1: ['Kerk', Validators.required],
+      ngk2: ['', Validators.required],
     });
 
-    this.presentationForm.get('ochtend').valueChanges.subscribe(ochtend => {
-      const validator = ochtend ? [] : [Validators.required];
-      this.collecteForm.get('ngk1').setValidators(validator);
-      this.collecteForm.get('ngk1').updateValueAndValidity();
-      this.collecteForm.get('ngk2').setValidators(validator);
-      this.collecteForm.get('ngk2').updateValueAndValidity();
-      this.collecteForm.get('ngk3').setValidators(validator);
-      this.collecteForm.get('ngk3').updateValueAndValidity();
-      this.collecteForm.get('ngk4').setValidators(validator);
-      this.collecteForm.get('ngk4').updateValueAndValidity();
+    this.setCollecte(nextSunday);
+
+    this.presentationForm.get('date').valueChanges.subscribe(date => {
+      this.setCollecte(date);
     });
+  }
+
+  setCollecte(selectedDate) {
+    const date = new Date(selectedDate);
+    const name = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+    if (date) {
+      if (name in collectedoelen) {
+        this.collecteForm.get('gkv1').setValue(collectedoelen[name].gkv1);
+        this.collecteForm.get('gkv2').setValue(collectedoelen[name].gkv2);
+        this.collecteForm.get('ngk1').setValue(collectedoelen[name].ngk1);
+        this.collecteForm.get('ngk2').setValue(collectedoelen[name].ngk2);
+      } else {
+        this.collecteForm.get('gkv1').setValue('');
+        this.collecteForm.get('gkv2').setValue('Rente en aflossing');
+        this.collecteForm.get('ngk1').setValue('Kerk');
+        this.collecteForm.get('ngk2').setValue('');
+      }
+    }
   }
 
   addNew(type: string) {
@@ -144,7 +186,7 @@ export class AppComponent {
     this.downloadURL = '';
     const filename = this.name();
 
-    fetch('https://api.debronhg.tim365.dev/generate', {
+    fetch('http://localhost:3000/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

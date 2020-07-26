@@ -8,6 +8,7 @@ import {
   MatDatepickerModule, MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule,
+  MatSelectModule,
   MatInputModule, MatNativeDateModule, MatProgressSpinnerModule, MatRadioModule,
   MatSliderModule,
   MatStepperModule
@@ -54,6 +55,7 @@ import { AutofocusDirective } from './directives/autofocus.directive';
     FormsModule,
     DragDropModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
   ],
   entryComponents: [
     ItemEditFormComponent,

@@ -25,10 +25,45 @@
     </mat-form-field>
   </div>
   <div *ngIf="object.type === 'bijbeltekst'">
-    <mat-form-field appearance="fill" floatLabel="auto">
-      <mat-label>Tekst</mat-label>
-      <input autocomplete="off" matInput [(ngModel)]="object.text" [appAutofocus]>
+    <mat-form-field appearance="fill">
+      <mat-label>Boek</mat-label>
+      <mat-select [(ngModel)]="object.book">
+        <mat-optgroup label="Oude Testament">
+          <mat-option *ngFor="let book of books.OT" [value]="book.id">
+            {{book.name}}
+          </mat-option>
+        </mat-optgroup>
+        <mat-optgroup label="Nieuwe Testament">
+          <mat-option *ngFor="let book of books.NT" [value]="book.id">
+            {{book.name}}
+          </mat-option>
+        </mat-optgroup>
+        <mat-optgroup label="Deuterocanonieke boeken">
+          <mat-option *ngFor="let book of books.DC" [value]="book.id">
+            {{book.name}}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
     </mat-form-field>
+
+    <div *ngIf="object.book">
+      <mat-form-field floatLabel="auto">
+        <mat-label>Vanaf boek</mat-label>
+        <input autocomplete="off" type="number" min="1" [max]="chapters[object.book]" matInput [(ngModel)]="object.fromChapter">
+      </mat-form-field>
+      <mat-form-field floatLabel="auto">
+        <mat-label>Vanaf vers</mat-label>
+        <input autocomplete="off" type="number" min="1"  matInput [(ngModel)]="object.fromVerse">
+      </mat-form-field>
+      <mat-form-field floatLabel="auto">
+        <mat-label>Tot boek</mat-label>
+        <input autocomplete="off" type="number" [min]="object.fromChapter" [max]="chapters[object.book]" matInput [(ngModel)]="object.toChapter">
+      </mat-form-field>
+      <mat-form-field floatLabel="auto">
+        <mat-label>Tot vers</mat-label>
+        <input autocomplete="off" type="number" [min]="object.fromChapter === object.toChapter ? object.fromVerse : 1" matInput [(ngModel)]="object.toVerse">
+      </mat-form-field>
+    </div>
   </div>
 
   <mat-form-field appearance="fill" floatLabel="always">

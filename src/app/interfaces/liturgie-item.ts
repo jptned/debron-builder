@@ -11,6 +11,7 @@ export const partTypes = {
 
 export abstract class LiturgieItem {
   title?: string;
+  subTitle = '';
   liturgie = '';
   type: string;
   song = '';

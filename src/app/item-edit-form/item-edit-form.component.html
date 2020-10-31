@@ -1,7 +1,7 @@
 <h2 class="mat-h2" *ngIf="data.action === 'new'">Nieuw liturgie-item</h2>
 <h2 class="mat-h2" *ngIf="data.action !== 'new'">Liturgie-item bewerken</h2>
 
-<div (keydown.enter)="close()">
+<div (keydown.enter)="closeEnter()">
   <mat-form-field appearance="fill" floatLabel="auto">
     <mat-label>Titel</mat-label>
     <input autocomplete="off" matInput [(ngModel)]="object.title" [appAutofocus]="object.type === 'titel' || object.type === 'votum' || object.type === 'collecte' || object.type === 'zegen' || object.type === 'ondertiteling'">
@@ -67,6 +67,10 @@
   </div>
   <div *ngIf="object.type === 'ondertiteling'">
     <p>
+      <mat-form-field appearance="fill" floatLabel="auto">
+        <mat-label>Subtitel</mat-label>
+        <input matInput [(ngModel)]="object.subTitle">
+      </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Liedtekst</mat-label>
         <textarea style="height: 270px" matInput [(ngModel)]="object.text"></textarea>

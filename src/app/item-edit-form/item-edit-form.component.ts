@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material';
-import { Lied, LiturgieItem } from '../interfaces/liturgie-item';
+import { Lied, LiturgieItem, Ondertiteling } from '../interfaces/liturgie-item';
 
 @Component({
   selector: 'app-item-edit-form',
@@ -24,6 +24,13 @@ export class ItemEditFormComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  closeEnter() {
+    if (this.object instanceof Ondertiteling) {
+      return;
+    }
+    close();
   }
 
   close() {

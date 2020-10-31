@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material';
 import { ItemEditFormComponent } from './item-edit-form/item-edit-form.component';
-import { Bijbeltekst, Collecte, Lied, LiturgieItem, Titel, Votum, Zegen } from './interfaces/liturgie-item';
+import { Bijbeltekst, Collecte, Lied, LiturgieItem, Ondertiteling, Titel, Votum, Zegen } from './interfaces/liturgie-item';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 const welkom = new Titel();
@@ -124,6 +124,9 @@ export class AppComponent {
       case 'zegen':
         obj = new Zegen();
         break;
+      case 'ondertiteling':
+        obj = new Ondertiteling();
+        break;
       default:
         obj = new Titel();
         break;
@@ -186,7 +189,7 @@ export class AppComponent {
     this.downloadURL = '';
     const filename = this.name();
 
-    fetch('https://api.debronhg.tim365.dev/generate', {
+    fetch('http://localhost:3000/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

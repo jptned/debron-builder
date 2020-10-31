@@ -4,7 +4,7 @@
 <div (keydown.enter)="close()">
   <mat-form-field appearance="fill" floatLabel="auto">
     <mat-label>Titel</mat-label>
-    <input autocomplete="off" matInput [(ngModel)]="object.title" [appAutofocus]="object.type === 'titel' || object.type === 'votum' || object.type === 'collecte' || object.type === 'zegen'">
+    <input autocomplete="off" matInput [(ngModel)]="object.title" [appAutofocus]="object.type === 'titel' || object.type === 'votum' || object.type === 'collecte' || object.type === 'zegen' || object.type === 'ondertiteling'">
   </mat-form-field>
 
   <div *ngIf="object.type === 'votum'">
@@ -53,7 +53,7 @@
       </mat-form-field>
       <mat-form-field floatLabel="auto">
         <mat-label>Vanaf vers</mat-label>
-        <input autocomplete="off" type="number" min="1"  matInput [(ngModel)]="object.fromVerse">
+        <input autocomplete="off" type="number" min="1" matInput [(ngModel)]="object.fromVerse">
       </mat-form-field>
       <mat-form-field floatLabel="auto">
         <mat-label>Tot boek</mat-label>
@@ -64,6 +64,15 @@
         <input autocomplete="off" type="number" [min]="object.fromChapter === object.toChapter ? object.fromVerse : 1" matInput [(ngModel)]="object.toVerse">
       </mat-form-field>
     </div>
+  </div>
+  <div *ngIf="object.type === 'ondertiteling'">
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Liedtekst</mat-label>
+        <textarea style="height: 270px" matInput [(ngModel)]="object.text"></textarea>
+        <mat-hint>Enter voor nieuwe regel, zet twee regels per dia, lege regel voor nieuwe dia, dubbele lege regel voor lege dia</mat-hint>
+      </mat-form-field>
+    </p>
   </div>
 
   <mat-form-field appearance="fill" floatLabel="always">

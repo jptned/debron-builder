@@ -6,6 +6,7 @@ export const partTypes = {
   bijbeltekst: 'bijbeltekst',
   collecte: 'collecte',
   zegen: 'zegen',
+  ondertiteling: 'ondertiteling',
 };
 
 export abstract class LiturgieItem {
@@ -93,6 +94,16 @@ export class Collecte extends LiturgieItem {
 export class Zegen extends LiturgieItem {
   title = 'Zegen';
   type = partTypes.zegen;
+
+  getTitle(): string {
+    return this.title;
+  }
+}
+
+
+export class Ondertiteling extends LiturgieItem {
+  title = '';
+  type = partTypes.ondertiteling;
 
   getTitle(): string {
     return this.title;
